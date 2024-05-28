@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_28_185316) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_28_200136) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_28_185316) do
     t.text "description"
     t.boolean "has_parking"
     t.boolean "has_fire_safety"
-    t.boolean "has_refridgeration"
+    t.boolean "has_refrigeration"
     t.string "storage_type"
     t.boolean "has_oven"
     t.boolean "has_stove"
@@ -44,6 +44,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_28_185316) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.bigint "kitchen_id", null: false
+    t.index ["kitchen_id"], name: "index_reservations_on_kitchen_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -64,4 +68,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_28_185316) do
   end
 
   add_foreign_key "kitchens", "users"
+  add_foreign_key "reservations", "kitchens"
+  add_foreign_key "reservations", "users"
+
 end

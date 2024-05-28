@@ -71,5 +71,4 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_28_201850) do
   add_foreign_key "kitchens", "users"
   add_foreign_key "reservations", "kitchens"
   add_foreign_key "reservations", "users"
-
 end

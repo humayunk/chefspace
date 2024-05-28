@@ -1,0 +1,29 @@
+<h1 class="text-center my-4">All Kitchens</h1>
+
+<div class="container">
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Address</th>
+        <th scope="col">Kitchen Type</th>
+        <th scope="col">Description</th>
+        <th scope="col">Daily Rate</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @kitchens.each do |kitchen| %>
+        <tr>
+          <td><%= kitchen.address %></td>
+          <td><%= kitchen.kitchen_type %></td>
+          <td><%= kitchen.description %></td>
+          <td><%= number_to_currency(kitchen.daily_rate) %></td>
+          <td>
+            <%= link_to 'Show', kitchen, class: 'btn btn-primary btn-sm' %>
+            <%= link_to 'New Reservation', new_kitchen_reservation_path(kitchen), class: 'btn btn-success btn-sm' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

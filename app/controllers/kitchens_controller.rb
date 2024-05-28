@@ -4,4 +4,7 @@ class KitchensController < ApplicationController
     @kitchens = Kitchen.all
   end
 
+  def show
+  end
+
 end

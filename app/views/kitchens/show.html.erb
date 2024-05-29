@@ -15,3 +15,55 @@
 <p><%= @kitchen.has_cutlery %></p>
 <p><%= @kitchen.availability %></p>
 <p><%= @kitchen.prep_tables %></p>
+
+<%# create simple form here %>
+
+<div class='reservation_form'>
+  <h4><%= @kitchen.daily_rate %>$/day</h4>
+  <%= simple_form_for [@kitchen, @reservation] do |f| %>
+    <%= f.input :start_date, as: :date, input_html: { id: 'start_date' } %>
+    <%= f.input :end_date, as: :date, input_html: { id: 'end_date' } %>
+    <%= f.submit class:"btn btn-flat" %>
+    <div>
+      <label>Total Price: </label>
+      <span id="total_price">0</span>
+    </div>
+  <% end %>
+</div>
+
+
+<%= javascript_tag do %>
+  document.addEventListener('DOMContentLoaded', function() {
+    const startDateInput = document.getElementById('start_date');
+    const endDateInput = document.getElementById('end_date');
+    const totalPriceSpan = document.getElementById('total_price');
+    const pricePerDay = <%= @kitchen.daily_rate.to_f %>;
+
+    function calculateTotalPrice() {
+      console.log('Calculating total price');
+      const startDate = new Date(startDateInput.value);
+      const endDate = new Date(endDateInput.value);
+
+      if (startDate && endDate && startDate <= endDate) {
+        const timeDifference = endDate - startDate;
+        const dayDifference = timeDifference / (1000 * 3600 * 24) + 1;
+        const totalPrice = dayDifference * pricePerDay;
+        totalPriceSpan.textContent = totalPrice.toFixed(2);
+      } else {
+        totalPriceSpan.textContent = '0';
+      }
+    }
+
+    startDateInput.addEventListener('change', function() {
+      console.log('Start date changed');
+      calculateTotalPrice();
+    });
+
+    endDateInput.addEventListener('click', function() {
+      console.log('End date changed');
+      calculateTotalPrice();
+    });
+
+    <%# calculateTotalPrice(); %>
+  });
+<% end %>

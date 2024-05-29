@@ -1,2 +1,77 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<!-- Hero Section -->
+  <section id="hero" class="jumbotron text-center mb-0">
+    <div class="container">
+      <h1 class="display-4">Welcome to ChefSpace</h1>
+      <p class="lead">Your one-stop solution for renting industrial kitchens.</p>
+      <%= link_to 'See Our Kitchens', kitchens_path, class: 'btn btn-primary btn-lg text-white' %>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-5">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-lg-4">
+          <i class="fas fa-utensils fa-3x mb-3"></i>
+          <h3>Fully Equipped Kitchens</h3>
+          <p>Rent fully equipped industrial kitchens for all your culinary needs.</p>
+        </div>
+        <div class="col-lg-4">
+          <i class="fas fa-users fa-3x mb-3"></i>
+          <h3>Flexible Terms</h3>
+          <p>Flexible rental terms to suit your schedule and requirements.</p>
+        </div>
+        <div class="col-lg-4">
+          <i class="fas fa-shield-alt fa-3x mb-3"></i>
+          <h3>Safe and Secure</h3>
+          <p>Top-notch safety and security features in all our kitchens.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section id="about" class="py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>About ChefSpace</h2>
+          <p>ChefSpace is dedicated to providing high-quality industrial kitchens for rent. Our mission is to support culinary entrepreneurs and established businesses by offering top-notch kitchen spaces that meet all their needs.</p>
+        </div>
+        <div class="col-md-6">
+          <%= image_tag "about-us.png" %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-5">
+    <div class="container">
+      <h2 class="text-center">Contact Us</h2>
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputName">Name</label>
+            <input type="text" class="form-control" id="inputName" placeholder="Name">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputEmail">Email</label>
+            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputMessage">Message</label>
+          <textarea class="form-control" id="inputMessage" rows="4" placeholder="Your message"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-light py-3 text-center">
+    <div class="container">
+      <p class="m-0">© 2024 ChefSpace. All rights reserved.</p>
+    </div>
+  </footer>

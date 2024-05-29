@@ -4,6 +4,7 @@
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
+        <th scope="col">Name</th>
         <th scope="col">Address</th>
         <th scope="col">Kitchen Type</th>
         <th scope="col">Description</th>
@@ -14,6 +15,7 @@
     <tbody>
       <% @kitchens.each do |kitchen| %>
         <tr>
+          <td><%= kitchen.name %></td>
           <td><%= kitchen.address %></td>
           <td><%= kitchen.kitchen_type %></td>
           <td><%= kitchen.description %></td>

@@ -10,8 +10,6 @@ Rails.application.routes.draw do
     resources :reservations, only: [ :new, :create ]
   end
 
-  resources :myreservations, only: [ :index ]
-
   resources :reservations, only: [ :show, :update ]
 
   resources :mykitchens, only: [ :index, :show, :update, :create ] do
@@ -20,6 +18,11 @@ Rails.application.routes.draw do
 
   #  owner's kitchens
   get 'my_kitchens', to: 'kitchens#my_kitchens'
+
   # Defines the root path route ("/")
   # root "posts#index"
+
+  # client's reservations
+  get 'my_reservations', to: 'reservations#index'
+
 end

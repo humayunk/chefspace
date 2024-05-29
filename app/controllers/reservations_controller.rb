@@ -2,6 +2,10 @@ class ReservationsController < ApplicationController
   before_action :set_kitchen, only: [:new, :create]
   before_action :set_reservation, only: [:show, :update]
 
+  def index
+    @reservations = Reservation.all
+  end
+
   def new
     @reservation = Reservation.new
   end
@@ -9,8 +13,9 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     @reservation.kitchen = @kitchen
+    @reservation.user = current_user
     if @reservation.save
-      redirect_to kitchen_path(@kitchen)
+      redirect_to kitchen_path(@kitchen), notice: 'Reservation was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end

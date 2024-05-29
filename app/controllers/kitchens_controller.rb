@@ -7,6 +7,7 @@ class KitchensController < ApplicationController
 
   def show
     @kitchen = Kitchen.find(params[:id])
+    @reservation = @kitchen.reservations.build
   end
 
   def new
@@ -17,7 +18,7 @@ class KitchensController < ApplicationController
     @kitchen = Kitchen.new(kitchen_params)
     @kitchen.user = current_user
     if @kitchen.save
-      redirect_to kitchen_path(@kitchen)
+      redirect_to my_kitchens_path(current_user)
     else
       render :new, status: :unprocessable_entity
     end

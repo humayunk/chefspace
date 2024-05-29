@@ -15,6 +15,7 @@ class KitchensController < ApplicationController
 
   def create
     @kitchen = Kitchen.new(kitchen_params)
+    @kitchen.user = current_user
     if @kitchen.save
       redirect_to kitchen_path(@kitchen)
     else

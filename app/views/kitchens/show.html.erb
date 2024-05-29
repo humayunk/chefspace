@@ -1,17 +1,73 @@
-<h2><%= @kitchen.name %></h2>
-<p><%= @kitchen.address %></p>
-<p><%= @kitchen.daily_rate %></p>
-<p><%= @kitchen.kitchen_type %></p>
-<p><%= @kitchen.description %></p>
-<p><%= @kitchen.has_parking %></p>
-<p><%= @kitchen.has_fire_safety %></p>
-<p><%= @kitchen.has_refrigeration %></p>
-<p><%= @kitchen.storage_type %></p>
-<p><%= @kitchen.has_oven %></p>
-<p><%= @kitchen.has_stove %></p>
-<p><%= @kitchen.has_fryer %></p>
-<p><%= @kitchen.has_dishwasher %></p>
-<p><%= @kitchen.has_cookware %></p>
-<p><%= @kitchen.has_cutlery %></p>
-<p><%= @kitchen.availability %></p>
-<p><%= @kitchen.prep_tables %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h2><%= @kitchen.name %></h2>
+      <p><%= @kitchen.address %></p>
+      <p><%= @kitchen.kitchen_type %></p>
+      <p><%= @kitchen.description %></p>
+      <p><%= @kitchen.has_parking %></p>
+      <p><%= @kitchen.has_fire_safety %></p>
+      <p><%= @kitchen.has_refrigeration %></p>
+      <p><%= @kitchen.storage_type %></p>
+      <p><%= @kitchen.has_oven %></p>
+      <p><%= @kitchen.has_stove %></p>
+      <p><%= @kitchen.has_fryer %></p>
+      <p><%= @kitchen.has_dishwasher %></p>
+      <p><%= @kitchen.has_cookware %></p>
+      <p><%= @kitchen.has_cutlery %></p>
+      <p><%= @kitchen.availability %></p>
+      <p><%= @kitchen.prep_tables %></p>
+    </div>
+
+    <div class="col-md-6">
+      <div class='reservation_form'>
+        <h4><%= @kitchen.daily_rate %>$/day</h4>
+        <%= simple_form_for [@kitchen, @reservation] do |f| %>
+          <%= f.input :start_date, as: :date, html5: true, input_html: { id: 'start_date' } %>
+          <%= f.input :end_date, as: :date, html5: true, input_html: { id: 'end_date' } %>
+          <%= link_to "Create Reservation", "javascript:void(0);", class: "btn btn-primary mb-3", id: "create_reservation_button" %>
+          <%= f.submit "Submit", class: "btn btn-flat", style: "display: none;" %>
+          <%# add the link later %>
+          <div class="mt-3">
+            <label>Total Price: </label>
+            <span id="total_price">0</span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<%= javascript_tag do %>
+  document.addEventListener('DOMContentLoaded', function() {
+    const startDateInput = document.getElementById('start_date');
+    const endDateInput = document.getElementById('end_date');
+    const totalPriceSpan = document.getElementById('total_price');
+    const pricePerDay = <%= @kitchen.daily_rate.to_f %>;
+
+    function calculateTotalPrice() {
+      const startDate = new Date(startDateInput.value);
+      const endDate = new Date(endDateInput.value);
+
+      if (startDate && endDate && startDate <= endDate) {
+        const timeDifference = endDate - startDate;
+        const dayDifference = timeDifference / (1000 * 3600 * 24) + 1;
+        const totalPrice = dayDifference * pricePerDay;
+        totalPriceSpan.textContent = totalPrice.toFixed(2);
+      } else {
+        totalPriceSpan.textContent = '0';
+      }
+    }
+
+    startDateInput.addEventListener('change', function() {
+      calculateTotalPrice();
+    });
+
+    endDateInput.addEventListener('change', function() {
+      calculateTotalPrice();
+    });
+
+    calculateTotalPrice();
+  });
+<% end %>

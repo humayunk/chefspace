@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <h1>Create a new kitchen</h1>
+      <%= simple_form_for @kitchen do |f| %>
+        <%= f.input :name %>
+        <%= f.input :address %>
+        <%= f.input :daily_rate %>
+        <%= f.input :kitchen_type, collection: ['commercial', 'private', 'ghost', 'test', 'catering', 'restaurant', 'baking' ] %>
+        <%= f.input :storage_type, collection: ['cold', 'dry', 'freezer'] %>
+        <%= f.input :prep_tables %>
+        <%= f.input :description %>
+        <%= f.input :has_parking, as: :boolean %>
+        <%= f.input :has_fire_safety, as: :boolean %>
+        <%= f.input :has_refrigeration, as: :boolean %>
+        <%= f.input :has_oven, as: :boolean %>
+        <%= f.input :has_stove, as: :boolean %>
+        <%= f.input :has_fryer, as: :boolean %>
+        <%= f.input :has_dishwasher, as: :boolean %>
+        <%= f.input :has_cookware, as: :boolean %>
+        <%= f.input :has_cutlery, as: :boolean %>
+        <%= f.input :availability, as: :boolean %>
+        <%= f.submit class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>

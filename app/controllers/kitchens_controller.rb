@@ -23,6 +23,10 @@ class KitchensController < ApplicationController
     end
   end
 
+  def my_kitchens
+    @kitchens = current_user.kitchens
+  end
+
   private
 
   def kitchen_params

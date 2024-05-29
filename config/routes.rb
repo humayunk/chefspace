@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   resources :mykitchens, only: [ :index, :show, :update, :create ] do
     resources :reservations, only: [ :index, :update ]
   end
+
+  #  owner's kitchens
+  get 'my_kitchens', to: 'kitchens#my_kitchens'
   # Defines the root path route ("/")
   # root "posts#index"
 end

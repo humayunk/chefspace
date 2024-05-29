@@ -2,6 +2,10 @@ class ReservationsController < ApplicationController
   before_action :set_kitchen, only: [:new, :create]
   before_action :set_reservation, only: [:show, :update]
 
+  def index
+    @reservations = Reservation.all
+  end
+
   def new
     @reservation = Reservation.new
   end

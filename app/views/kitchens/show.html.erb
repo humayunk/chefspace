@@ -133,34 +133,32 @@
 
 
 <%= javascript_tag do %>
-  document.addEventListener('DOMContentLoaded', function() {
-    const startDateInput = document.getElementById('start_date');
-    const endDateInput = document.getElementById('end_date');
-    const totalPriceSpan = document.getElementById('total_price');
-    const pricePerDay = <%= @kitchen.daily_rate.to_f %>;
+  const startDateInput = document.getElementById('start_date');
+  const endDateInput = document.getElementById('end_date');
+  const totalPriceSpan = document.getElementById('total_price');
+  const pricePerDay = <%= @kitchen.daily_rate.to_f %>;
 
-    function calculateTotalPrice() {
-      const startDate = new Date(startDateInput.value);
-      const endDate = new Date(endDateInput.value);
+  function calculateTotalPrice() {
+    const startDate = new Date(startDateInput.value);
+    const endDate = new Date(endDateInput.value);
 
-      if (startDate && endDate && startDate <= endDate) {
-        const timeDifference = endDate - startDate;
-        const dayDifference = timeDifference / (1000 * 3600 * 24) + 1;
-        const totalPrice = dayDifference * pricePerDay;
-        totalPriceSpan.textContent = totalPrice.toFixed(2);
-      } else {
-        totalPriceSpan.textContent = '0';
-      }
+    if (startDate && endDate && startDate <= endDate) {
+      const timeDifference = endDate - startDate;
+      const dayDifference = timeDifference / (1000 * 3600 * 24) + 1;
+      const totalPrice = dayDifference * pricePerDay;
+      totalPriceSpan.textContent = totalPrice.toFixed(2);
+    } else {
+      totalPriceSpan.textContent = '0';
     }
+  }
 
-    startDateInput.addEventListener('change', function() {
-      calculateTotalPrice();
-    });
-
-    endDateInput.addEventListener('change', function() {
-      calculateTotalPrice();
-    });
-
+  startDateInput.addEventListener('change', function() {
     calculateTotalPrice();
+    <%# code js ici pour is valid or invalid + définition  %>
+  });
+
+  endDateInput.addEventListener('change', function() {
+    calculateTotalPrice();
+    <%# code js ici pour is valid or invalid + définition %>
   });
 <% end %>

@@ -81,7 +81,7 @@ reservations = Reservation.create!([
     start_date: Date.today,
     end_date: Date.today + 7,
     total_price: 1050.0,
-    status: "confirmed"
+    status: "accepted"
   },
   {
     user_id: users[0].id,
@@ -89,6 +89,6 @@ reservations = Reservation.create!([
     start_date: Date.today + 10,
     end_date: Date.today + 17,
     total_price: 1400.0,
-    status: "confirmed"
+    status: "accepted"
   }
 ])

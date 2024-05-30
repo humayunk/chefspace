@@ -26,11 +26,11 @@ class ReservationsController < ApplicationController
 
   def update
     @reservation.update(reservation_params)
-    redirect_to reservation_path(@reservation)
+    redirect_to my_kitchens_path
   end
 
-  def owner_reservations
-  end
+  # def owner_reservations
+  # end
 
   private
 

@@ -20,6 +20,7 @@
         <%= f.input :has_cookware, as: :boolean %>
         <%= f.input :has_cutlery, as: :boolean %>
         <%= f.input :availability, as: :boolean %>
+        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
         <%= f.submit class: 'btn btn-primary' %>
       <% end %>
     </div>

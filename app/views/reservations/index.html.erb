@@ -3,10 +3,17 @@
 <div class="container">
   <% @reservations.each do |reservation| %>
     <div class="card-reservation my-3 border border-dark p-3">
-      <td><%= reservation.kitchen.address %></td>
-      <td><%= reservation.kitchen.kitchen_type %></td>
-      <td><%= reservation.kitchen.description %></td>
-      <button> <%= reservation.status %> </button>
+      <div class="card-dates my-3">
+        <td>From: <%= reservation.start_date %> To: <%= reservation.end_date %></td>
+      </div>
+      <div class="card-details my-3">
+        <td><%= reservation.kitchen.address %></td>
+        <td><%= reservation.kitchen.kitchen_type %></td>
+        <td><%= reservation.kitchen.description %></td>
+      </div>
+      <div class="status-button">
+        <button class="my-2"> <%= reservation.status %> </button>
+      </div>
     </div>
   <% end %>
 </div>

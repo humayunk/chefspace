@@ -11,6 +11,8 @@ class Reservation < ApplicationRecord
 
   validate :start_date_is_valid_datetime
   validate :end_date_is_valid_datetime
+  validate :start_date_is_in_future
+  validate :end_date_is_in_future
   validate :end_date_is_after_start_date
 
   private
@@ -29,6 +31,18 @@ class Reservation < ApplicationRecord
     DateTime.parse(end_date.to_s)
   rescue ArgumentError
     errors.add(:end_date, 'must be a valid datetime')
+  end
+
+  def start_date_is_in_future
+    if start_date.present? && start_date < Date.today
+      errors.add(:start_date, 'cannot be in the past')
+    end
+  end
+
+  def end_date_is_in_future
+    if end_date.present? && end_date < Date.today
+      errors.add(:end_date, 'cannot be in the past')
+    end
   end
 
   def end_date_is_after_start_date

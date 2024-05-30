@@ -60,18 +60,22 @@
     </div>
 
     <div class="col-md-4">
-      <div class="show-card show-reservation_form">
-        <div class="card-body">
-          <h4><%= @kitchen.daily_rate %>$/day</h4>
-          <%= simple_form_for [@kitchen, @reservation] do |f| %>
-            <div class="form-group">
-              <%= f.input :start_date, as: :date, html5: true, input_html: { id: 'start_date', class: 'form-control' } %>
-            </div>
-            <div class="form-group">
-              <%= f.input :end_date, as: :date, html5: true, input_html: { id: 'end_date', class: 'form-control' } %>
-            </div>
-            <%= f.submit "Submit reservation", class: "btn btn-primary w-100 mt-3" %>
-          <% end %>
+<div class="show-card show-reservation_form">
+  <div class="card-body">
+    <h4><%= @kitchen.daily_rate %>$/day</h4>
+    <%= simple_form_for [@kitchen, @reservation] do |f| %>
+      <div class="form-group">
+        <%= f.input :start_date, as: :date, html5: true, input_html: { id: 'start_date', class: 'form-control' } %>
+      </div>
+      <div class="form-group">
+        <%= f.input :end_date, as: :date, html5: true, input_html: { id: 'end_date', class: 'form-control' } %>
+      </div>
+      <%= f.submit "Submit reservation", class: "btn btn-primary w-100 mt-3" %>
+      <%= f.input :total_price, as: :hidden, input_html: { id: 'total_price_input' } %>
+    <% end %>
+  </div>
+</div>
+
           <div class="mt-3">
             <label>Total Price: </label>
             <span id="total_price">0</span>$
@@ -88,19 +92,22 @@
   const endDateInput = document.getElementById('end_date');
   const totalPriceSpan = document.getElementById('total_price');
   const pricePerDay = <%= @kitchen.daily_rate.to_f %>;
+  const totalPriceInput = document.getElementById('total_price_input');
 
   function calculateTotalPrice() {
     const startDate = new Date(startDateInput.value);
     const endDate = new Date(endDateInput.value);
+    let totalPrice;
 
     if (startDate && endDate && startDate <= endDate) {
       const timeDifference = endDate - startDate;
       const dayDifference = timeDifference / (1000 * 3600 * 24) + 1;
-      const totalPrice = dayDifference * pricePerDay;
-      totalPriceSpan.textContent = totalPrice.toFixed(2);
+      totalPrice = (dayDifference * pricePerDay).toFixed(2);
     } else {
-      totalPriceSpan.textContent = '0';
+      totalPrice = '0';
     }
+    totalPriceSpan.textContent = totalPrice;
+    totalPriceInput.value = totalPrice;
   }
 
   startDateInput.addEventListener('change', calculateTotalPrice);

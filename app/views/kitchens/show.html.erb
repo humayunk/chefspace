@@ -2,18 +2,20 @@
   <div class="row">
     <div class="col-md-8">
       <div class="show-card">
+        <% if @kitchen.photos.attached? && @kitchen.photos.any? %>
+          <%= cl_image_tag @kitchen.photos.first.key, class: "img-fluid rounded-top", alt: "Kitchen Image" %>
+        <% else %>
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" alt="<%= @kitchen.name %>" class="img-fluid rounded-top">
+        <% end %>
         <div class="show-card-description card-body">
           <h2 class="card-title"><%= @kitchen.name %></h2>
-          <% if @kitchen.photos.attached? && @kitchen.photos.any? %>
-            <%= cl_image_tag @kitchen.photos.first.key, class: "img-fluid mb-3", alt: "Kitchen Image" %>
-          <% end %>
 
           <h4 class="mt-4">About:</h4>
           <p class="mb-2"><strong>Address:</strong> <%= @kitchen.address %></p>
           <p class="mb-2"><strong>Type:</strong> <%= @kitchen.kitchen_type %></p>
-          <p class="mb-3"><strong>Overview:</strong><%= @kitchen.description %></p>
+          <p class="mb-3"><strong>Overview:</strong> <%= @kitchen.description %></p>
 
-          <h4 class="mt-4">Features:</h4>
+          <h5 class="mt-4">Features:</h5>
           <div class="row mt-3">
             <div class="col-md-6">
               <% if @kitchen.has_parking %>
@@ -79,6 +81,7 @@
     </div>
   </div>
 </div>
+
 
 <%= javascript_tag do %>
   const startDateInput = document.getElementById('start_date');

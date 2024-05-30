@@ -4,18 +4,19 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-top: 10px;
   margin-bottom: 10px;
+  overflow: hidden; /* Ensure content does not overflow the card */
+}
+
+.show-card img {
+  width: 100%; /* Ensure image takes the full width of the card */
+  max-height: 300px; /* Set maximum height */
+  object-fit: cover; /* Maintain aspect ratio */
 }
 
 .show-card-description {
-  overflow: hidden;
   background-color: rgba(255, 255, 255, 0.66);
   padding: 20px; /* Adjusted padding for better spacing */
-}
-
-.show-card-description > img {
-  height: 200px;
-  width: 100%;
-  object-fit: cover;
+  margin-top: -10px; /* Adjusted margin to compensate for image */
 }
 
 .flex-container {
@@ -30,4 +31,5 @@
   padding: 15px;
   border-radius: 15px; /* Adjust this value as needed */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: auto; /* Ensure it does not stretch unnecessarily */
 }

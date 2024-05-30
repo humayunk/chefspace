@@ -65,7 +65,7 @@
             <td>
               <%= button_to 'Accept', reservation_path(reservation, reservation: {status: 'accepted'}), method: :patch, class: 'btn btn-primary btn-sm' %>
               <%# <%= link_to 'Edit', edit_kitchen_path(kitchen), class: 'btn btn-secondary btn-sm' %>
-              <%= button_to 'Decline', reservation_path(reservation, reservation: {status: 'declined'}), method: :patch, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+              <%= button_to 'Decline', reservation_path(reservation, reservation: {status: 'declined'}), method: :patch, class: 'btn btn-danger btn-sm' %>
             </td>
           </tr>
         </div>

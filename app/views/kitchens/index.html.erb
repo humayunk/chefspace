@@ -5,7 +5,11 @@
     <% @kitchens.each do |kitchen| %>
       <div class="col-sm-6 col-md-4 col-lg-3 mb-4 d-flex">
         <div class="card card-product w-100 rounded">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" alt="<%= kitchen.name %>" class="rounded-top">
+         <% if kitchen.photos.attached? && kitchen.photos.any? %>
+           <%= cl_image_tag kitchen.photos.first.key, class: "img-fluid rounded-top", alt: "Kitchen Image" %>
+          <% else %>
+           <%= image_tag 'placeholder.jpeg', alt: kitchen.name, class: 'img-fluid rounded-top' %>
+         <% end %>
           <div class="card-body card-product-infos d-flex flex-column">
             <h5 class="card-title"><%= kitchen.name %></h5>
             <p class="card-text"><%= kitchen.address %></p>

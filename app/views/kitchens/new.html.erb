@@ -1,27 +1,63 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-      <h1>Create a new kitchen</h1>
-      <%= simple_form_for @kitchen do |f| %>
-        <%= f.input :name %>
-        <%= f.input :address %>
-        <%= f.input :daily_rate %>
-        <%= f.input :kitchen_type, collection: ['commercial', 'private', 'ghost', 'test', 'catering', 'restaurant', 'baking' ] %>
-        <%= f.input :storage_type, collection: ['cold', 'dry', 'freezer'] %>
-        <%= f.input :prep_tables %>
-        <%= f.input :description %>
-        <%= f.input :has_parking, as: :boolean %>
-        <%= f.input :has_fire_safety, as: :boolean %>
-        <%= f.input :has_refrigeration, as: :boolean %>
-        <%= f.input :has_oven, as: :boolean %>
-        <%= f.input :has_stove, as: :boolean %>
-        <%= f.input :has_fryer, as: :boolean %>
-        <%= f.input :has_dishwasher, as: :boolean %>
-        <%= f.input :has_cookware, as: :boolean %>
-        <%= f.input :has_cutlery, as: :boolean %>
-        <%= f.input :availability, as: :boolean %>
-        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-        <%= f.submit class: 'btn btn-primary' %>
+<div class="container my-5">
+  <div class="card bg-white p-5 ">
+    <div class="card-body p-5">
+      <h1 class="card-title mb-4">Create a New Kitchen</h1>
+      <%= simple_form_for @kitchen, html: { class: 'form-horizontal' } do |f| %>
+        <div class="form-group">
+          <%= f.input :name, label_html: { class: 'control-label' }, input_html: { class: 'form-control bg-white' } %>
+        </div>
+        <div class="form-group">
+          <%= f.input :address, label_html: { class: 'control-label' }, input_html: { class: 'form-control bg-white' } %>
+        </div>
+        <div class="form-group">
+          <%= f.input :daily_rate, label_html: { class: 'control-label' }, input_html: { class: 'form-control bg-white' } %>
+        </div>
+        <div class="form-group">
+          <%= f.input :kitchen_type, collection: ['commercial', 'private', 'ghost', 'test', 'catering', 'restaurant', 'baking'], label_html: { class: 'control-label' }, input_html: { class: 'form-control bg-white' } %>
+        </div>
+        <div class="form-group">
+          <%= f.input :storage_type, collection: ['cold', 'dry', 'freezer'], label_html: { class: 'control-label' }, input_html: { class: 'form-control bg-white' } %>
+        </div>
+        <div class="form-group">
+          <%= f.input :prep_tables, label_html: { class: 'control-label' }, input_html: { class: 'form-control bg-white' } %>
+        </div>
+        <div class="form-group">
+          <%= f.input :description, label_html: { class: 'control-label' }, input_html: { class: 'form-control bg-white' } %>
+        </div>
+        <div class="form-group form-check">
+          <%= f.input :has_parking, as: :boolean, label_html: { class: 'form-check-label' }, input_html: { class: 'form-check-input' } %>
+        </div>
+        <div class="form-group form-check">
+          <%= f.input :has_fire_safety, as: :boolean, label_html: { class: 'form-check-label' }, input_html: { class: 'form-check-input' } %>
+        </div>
+        <div class="form-group form-check">
+          <%= f.input :has_refrigeration, as: :boolean, label_html: { class: 'form-check-label' }, input_html: { class: 'form-check-input' } %>
+        </div>
+        <div class="form-group form-check">
+          <%= f.input :has_oven, as: :boolean, label_html: { class: 'form-check-label' }, input_html: { class: 'form-check-input' } %>
+        </div>
+        <div class="form-group form-check">
+          <%= f.input :has_stove, as: :boolean, label_html: { class: 'form-check-label' }, input_html: { class: 'form-check-input' } %>
+        </div>
+        <div class="form-group form-check">
+          <%= f.input :has_fryer, as: :boolean, label_html: { class: 'form-check-label' }, input_html: { class: 'form-check-input' } %>
+        </div>
+        <div class="form-group form-check">
+          <%= f.input :has_dishwasher, as: :boolean, label_html: { class: 'form-check-label' }, input_html: { class: 'form-check-input' } %>
+        </div>
+        <div class="form-group form-check">
+          <%= f.input :has_cookware, as: :boolean, label_html: { class: 'form-check-label' }, input_html: { class: 'form-check-input' } %>
+        </div>
+        <div class="form-group form-check">
+          <%= f.input :has_cutlery, as: :boolean, label_html: { class: 'form-check-label' }, input_html: { class: 'form-check-input' } %>
+        </div>
+        <div class="form-group form-check">
+          <%= f.input :availability, as: :boolean, label_html: { class: 'form-check-label' }, input_html: { class: 'form-check-input' } %>
+        </div>
+        <div class="form-group">
+          <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'form-control-file' } %>
+        </div>
+        <%= f.submit 'Create Kitchen', class: 'btn btn-primary' %>
       <% end %>
     </div>
   </div>

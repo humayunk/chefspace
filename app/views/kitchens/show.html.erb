@@ -1,126 +1,89 @@
-<div class="container">
-
-  <h2><%= @kitchen.name %></h2>
-
-  <% if @kitchen.photos.attached? && @kitchen.photos.any? %>
-      <%= cl_image_tag @kitchen.photos.first.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-
+<div class="container mt-4">
   <div class="row">
     <div class="col-md-8">
-      <div class="card-description">
-        <h4> Description:</h4>
-        <p><%= @kitchen.address %></p>
-        <p><%= @kitchen.kitchen_type %></p>
-        <p><%= @kitchen.description %></p>
-      </div>
+      <div class="show-card">
+        <% if @kitchen.photos.attached? && @kitchen.photos.any? %>
+          <%= cl_image_tag @kitchen.photos.first.key, class: "img-fluid rounded-top", alt: "Kitchen Image" %>
+        <% else %>
+          <%= image_tag 'placeholder.jpeg', alt: @kitchen.name, class: 'img-fluid rounded-top' %>
+        <% end %>
+        <div class="show-card-description card-body">
+          <h2 class="card-title"><%= @kitchen.name %></h2>
 
-      <%# comment on style and position %>
-      <%# @kitchen.photos.each do |photo| %>
-        <%# cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-      <%# end %>
+          <h4 class="mt-4">About:</h4>
+          <p class="mb-2"><strong>Address:</strong> <%= @kitchen.address %></p>
+          <p class="mb-2"><strong>Type:</strong> <%= @kitchen.kitchen_type %></p>
+          <p class="mb-3"><strong>Overview:</strong> <%= @kitchen.description %></p>
 
-      <div class="card-features">
-        <h5> Features:</h5>
-
-        <div class="flex-container mt-3">
-
-          <div class="row-one">
-
-            <p class="flex-item">
+          <h5 class="mt-4">Features:</h5>
+          <div class="row mt-3">
+            <div class="col-md-6">
               <% if @kitchen.has_parking %>
-                <i class="fa-solid fa-car"></i>  Parking
+                <p><i class="fa-solid fa-car"></i> Parking</p>
               <% end %>
-            </p>
-
-            <p class="flex-item">
               <% if @kitchen.has_fire_safety %>
-                <i class="fa-solid fa-fire-extinguisher"></i>  Fire safety
+                <p><i class="fa-solid fa-fire-extinguisher"></i> Fire safety</p>
               <% end %>
-            </p>
-
-            <p class="flex-item">
               <% if @kitchen.has_cookware %>
-                <i class="fa-solid fa-kitchen-set"></i>  Cookware
+                <p><i class="fa-solid fa-kitchen-set"></i> Cookware</p>
               <% end %>
-            </p>
-
-            <p class="flex-item">
               <% if @kitchen.has_cutlery %>
-                <i class="fa-solid fa-utensils"></i>  Cutlery
+                <p><i class="fa-solid fa-utensils"></i> Cutlery</p>
               <% end %>
-            </p>
-
-            <p class="flex-item">
               <% if @kitchen.availability %>
-                <i class="fa-solid fa-clock"></i>  24/7
+                <p><i class="fa-solid fa-clock"></i> 24/7</p>
               <% end %>
-            </p>
-
-          </div>
-
-          <div class="row-two">
-
-            <p class="flex-item">
+            </div>
+            <div class="col-md-6">
               <% if @kitchen.has_fryer %>
-                <i class="fa-solid fa-temperature-high"></i>  Fryer
+                <p><i class="fa-solid fa-temperature-high"></i> Fryer</p>
               <% end %>
-            </p>
-
-            <p class="flex-item">
               <% if @kitchen.has_dishwasher %>
-                <i class="fa-solid fa-jug-detergent"></i>  Dishwasher
+                <p><i class="fa-solid fa-jug-detergent"></i> Dishwasher</p>
               <% end %>
-            </p>
-
-            <p class="flex-item">
               <% if @kitchen.has_refrigeration %>
-                <i class="fa-solid fa-temperature-low"></i>  Refrigeration
+                <p><i class="fa-solid fa-temperature-low"></i> Refrigeration</p>
               <% end %>
-            </p>
-
-            <p class="flex-item">
               <% if @kitchen.has_stove %>
-                <i class="fa-solid fa-fire-burner"></i>  Stove
+                <p><i class="fa-solid fa-fire-burner"></i> Stove</p>
               <% end %>
-            </p>
-
-            <p class="flex-item">
               <% if @kitchen.has_oven %>
-                <i class="fa-solid fa-temperature-high"></i>  Oven
+                <p><i class="fa-solid fa-temperature-high"></i> Oven</p>
               <% end %>
-            </p>
-
-
+            </div>
           </div>
 
+          <p class="mt-3"><strong>Storage types:</strong> <%= @kitchen.storage_type %></p>
+          <p class="mt-1"><strong>Prep Tables:</strong> <%= @kitchen.prep_tables %></p>
         </div>
-
-        <p>Storage types: <%= @kitchen.storage_type %></p>
-
-        <p>Prep Tables: <%= @kitchen.prep_tables %></p>
       </div>
     </div>
 
     <div class="col-md-4">
-      <div class='reservation_form'>
-        <h4><%= @kitchen.daily_rate %>$/day</h4>
-        <%= simple_form_for [@kitchen, @reservation] do |f| %>
-          <%= f.input :start_date, as: :date, html5: true, input_html: { id: 'start_date' } %>
-          <%= f.input :end_date, as: :date, html5: true, input_html: { id: 'end_date' } %>
-          <%# link_to "Go to checkout", "javascript:void(0);", class: "btn btn-primary mb-3", id: "create_reservation_button" %>
-          <%= f.submit "Submit reservation", class: "btn btn-primary" %>
-          <%# add the link later %>
-          <%= f.input :total_price, as: :hidden, input_html: { id: 'total_price_input' } %>
+<div class="show-card show-reservation_form">
+  <div class="card-body">
+    <h4><%= @kitchen.daily_rate %>$/day</h4>
+    <%= simple_form_for [@kitchen, @reservation] do |f| %>
+      <div class="form-group">
+        <%= f.input :start_date, as: :date, html5: true, input_html: { id: 'start_date', class: 'form-control' } %>
+      </div>
+      <div class="form-group">
+        <%= f.input :end_date, as: :date, html5: true, input_html: { id: 'end_date', class: 'form-control' } %>
+      </div>
+      <%= f.submit "Submit reservation", class: "btn btn-primary w-100 mt-3" %>
+      <%= f.input :total_price, as: :hidden, input_html: { id: 'total_price_input' } %>
+    <% end %>
+  </div>
+</div>
+
           <div class="mt-3">
             <label>Total Price: </label>
             <span id="total_price">0</span>$
           </div>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
-
 </div>
 
 
@@ -147,13 +110,6 @@
     totalPriceInput.value = totalPrice;
   }
 
-  startDateInput.addEventListener('change', function() {
-    calculateTotalPrice();
-    <%# code js ici pour is valid or invalid + définition  %>
-  });
-
-  endDateInput.addEventListener('change', function() {
-    calculateTotalPrice();
-    <%# code js ici pour is valid or invalid + définition %>
-  });
+  startDateInput.addEventListener('change', calculateTotalPrice);
+  endDateInput.addEventListener('change', calculateTotalPrice);
 <% end %>

@@ -7,9 +7,11 @@
         <td>From: <%= reservation.start_date %> To: <%= reservation.end_date %></td>
       </div>
       <div class="card-details my-3">
+        <td><%= reservation.kitchen.name %></td>
         <td><%= reservation.kitchen.address %></td>
         <td><%= reservation.kitchen.kitchen_type %></td>
         <td><%= reservation.kitchen.description %></td>
+        <td><%= number_to_currency(reservation.total_price) %></td>
       </div>
       <div class="status-button">
         <button class="my-2"> <%= reservation.status %> </button>

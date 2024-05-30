@@ -1,21 +1,23 @@
 <h1 class="text-center my-4">My Reservations</h1>
 
 <div class="container">
-  <% @reservations.each do |reservation| %>
-    <div class="card-reservation my-3 border border-dark p-3">
-      <div class="card-dates my-3">
-        <td>From: <%= reservation.start_date %> To: <%= reservation.end_date %></td>
+  <div class="row">
+    <% @reservations.each do |reservation| %>
+      <div class="col-md-8 offset-md-2 my-3">
+        <div class="card bg-white">
+          <div class="card-body">
+            <h5 class="card-title">From: <%= reservation.start_date %> To: <%= reservation.end_date %></h5>
+            <p class="card-text">
+              <strong>Kitchen Name:</strong> <%= reservation.kitchen.name %><br>
+              <strong>Address:</strong> <%= reservation.kitchen.address %><br>
+              <strong>Type:</strong> <%= reservation.kitchen.kitchen_type %><br>
+              <strong>Description:</strong> <%= reservation.kitchen.description %><br>
+              <strong>Total Price:</strong> <%= number_to_currency(reservation.total_price) %>
+            </p>
+            <a href="#" class="btn btn-secondary"><%= reservation.status %></a>
+          </div>
+        </div>
       </div>
-      <div class="card-details my-3">
-        <td><%= reservation.kitchen.name %></td>
-        <td><%= reservation.kitchen.address %></td>
-        <td><%= reservation.kitchen.kitchen_type %></td>
-        <td><%= reservation.kitchen.description %></td>
-        <td><%= number_to_currency(reservation.total_price) %></td>
-      </div>
-      <div class="status-button">
-        <button class="my-2"> <%= reservation.status %> </button>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

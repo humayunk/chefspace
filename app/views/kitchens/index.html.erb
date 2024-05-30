@@ -1,30 +1,20 @@
 <h1 class="text-center my-4">All Kitchens</h1>
 
 <div class="container">
-  <table class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Address</th>
-        <th scope="col">Kitchen Type</th>
-        <th scope="col">Description</th>
-        <th scope="col">Daily Rate</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @kitchens.each do |kitchen| %>
-        <tr>
-          <td><%= kitchen.name %></td>
-          <td><%= kitchen.address %></td>
-          <td><%= kitchen.kitchen_type %></td>
-          <td><%= kitchen.description %></td>
-          <td><%= number_to_currency(kitchen.daily_rate) %></td>
-          <td>
-            <%= link_to 'Show', kitchen, class: 'btn btn-primary btn-sm' %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <div class="row">
+    <% @kitchens.each do |kitchen| %>
+      <div class="col-sm-6 col-md-4 col-lg-3 mb-4 d-flex">
+        <div class="card card-product w-100 rounded">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" alt="<%= kitchen.name %>" class="rounded-top">
+          <div class="card-body card-product-infos d-flex flex-column">
+            <h5 class="card-title"><%= kitchen.name %></h5>
+            <p class="card-text"><%= kitchen.address %></p>
+            <p class="card-text"><%= kitchen.description %></p>
+            <p class="card-text"><%= number_to_currency(kitchen.daily_rate) %></p>
+            <%= link_to 'Show', kitchen, class: 'btn btn-primary btn-sm mt-auto btn-block' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

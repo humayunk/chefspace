@@ -7,12 +7,12 @@
 // General style
 $font-family-sans-serif: $body-font;
 $headings-font-family:   $headers-font;
-$body-bg:                $light-gray;
+$body-bg:                $light-green;
 $font-size-base:         1rem;
 
 // Colors
 $body-color: $gray;
-$primary:    $blue;
+$primary:    $dark-green;
 $success:    $green;
 $info:       $yellow;
 $danger:     $red;
@@ -26,3 +26,15 @@ $border-radius-xl:            .5rem;
 $border-radius-xxl:           1rem;
 
 // Override other variables below!
+
+.btn-primary {
+  background-color: $primary !important;
+  border-color: $primary !important;
+}
+
+.btn-primary:hover {
+  // background-color: darken($primary, 10%) !important;
+  // border-color: darken($primary, 10%) !important;
+  background-color: $orange-yellow !important;
+  color: $primary !important;
+}

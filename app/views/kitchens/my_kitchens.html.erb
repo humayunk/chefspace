@@ -1,16 +1,10 @@
-{
-  "imports": {
-    "@hotwired/stimulus": "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js",
-    <!-- [...] -->
-  }
-}
-
 <h1 class="text-center my-4">My Kitchens</h1>
 
 <div class="container">
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
+        <th scope="col">Name</th>
         <th scope="col">Address</th>
         <th scope="col">Kitchen Type</th>
         <th scope="col">Description</th>
@@ -21,6 +15,7 @@
     <tbody>
       <% @kitchens.each do |kitchen| %>
         <tr>
+          <td><%= kitchen.name %></td>
           <td><%= kitchen.address %></td>
           <td><%= kitchen.kitchen_type %></td>
           <td><%= kitchen.description %></td>
@@ -39,8 +34,6 @@
 <h1 class="text-center my-4">Incoming Requests</h1>
 
 <%# RESERVATIONS %>
-
-
 
 
 <div class="container">

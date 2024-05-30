@@ -12,10 +12,6 @@ Rails.application.routes.draw do
 
   resources :reservations, only: [ :show, :update ]
 
-  resources :mykitchens, only: [ :index, :show, :update, :create ] do
-    resources :reservations, only: [ :index, :update ]
-  end
-
   #  owner's kitchens
   get 'my_kitchens', to: 'kitchens#my_kitchens'
 
@@ -24,5 +20,4 @@ Rails.application.routes.draw do
 
   # client's reservations
   get 'my_reservations', to: 'reservations#index'
-
 end

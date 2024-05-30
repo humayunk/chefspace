@@ -1,6 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
+
+    <% if @kitchen.photos.attached? && @kitchen.photos.any? %>
+        <%= cl_image_tag @kitchen.photos.first.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+
+
       <h2><%= @kitchen.name %></h2>
       <p><%= @kitchen.address %></p>
       <p><%= @kitchen.kitchen_type %></p>

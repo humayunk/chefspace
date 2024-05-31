@@ -3,6 +3,9 @@ class KitchensController < ApplicationController
 
   def index
     @kitchens = Kitchen.all
+    if params[:query].present?
+      @kitchens = @kitchens.search_by_name_and_type(params[:query])
+    end
   end
 
   def show

@@ -14,7 +14,7 @@
             <h5 class="card-title"><%= kitchen.name %></h5>
             <p class="card-text"><%= kitchen.address %></p>
             <p class="card-text"><%= kitchen.description %></p>
-            <p class="card-text"><%= number_to_currency(kitchen.daily_rate) %></p>
+            <p class="card-text"><%= "#{number_to_currency(kitchen.daily_rate)}/day" %></p>
             <%= link_to 'Show', kitchen, class: 'btn btn-primary btn-sm mt-auto btn-block' %>
           </div>
         </div>

@@ -29,9 +29,6 @@ class ReservationsController < ApplicationController
     redirect_to my_kitchens_path
   end
 
-  # def owner_reservations
-  # end
-
   private
 
   def set_kitchen

@@ -54,8 +54,9 @@
             <td><%= reservation.total_price %></td>
             <td><%= reservation.status %></td>
             <td>
-              <%= button_to 'Accept', reservation_path(reservation, reservation: {status: 'Accepted'}), method: :patch, class: 'btn btn-primary btn-sm'%>
-              <%= button_to 'Decline', reservation_path(reservation, reservation: {status: 'Declined'}), method: :patch, class: 'btn btn-danger btn-sm' %>
+              <% is_disabled = reservation.status == 'pending' ? "" : "disabled" %>
+              <%= button_to 'Accept', reservation_path(reservation, reservation: {status: 'Accepted'}), method: :patch, class: "#{is_disabled} btn btn-primary btn-sm"%>
+              <%= button_to 'Decline', reservation_path(reservation, reservation: {status: 'Declined'}), method: :patch, class: "#{is_disabled} btn btn-danger btn-sm" %>
             </td>
           </tr>
         </div>

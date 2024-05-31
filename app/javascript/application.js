@@ -9,9 +9,6 @@ import { Application } from "@hotwired/stimulus"
 
 const application = Application.start()
 
-// import DisableButtonController from "./controllers/disable_button_controller.js"
-// Stimulus.register("disable-button", DisableButtonController)
-
 // Configure Stimulus development experience
 application.debug = false
 window.Stimulus   = application

@@ -1,21 +1,21 @@
-<h1 class="text-center my-4">All Kitchens</h1>
 
 <div class="container">
 
   <div class="row justify-content-center">
-    <div class="col-sm-8 my-3">
-      <%= form_with url: kitchens_path, method: :get, class: "d-flex" do %>
+    <div class="card-search col-sm-8 my-4">
+        <h1 class="text-center my-4">Find the perfect kitchen</h1>
+      <%= form_with url: kitchens_path, method: :get, class: "d-flex search-bar" do %>
         <%= text_field_tag :query,
               params[:query],
-              class: "form-control",
+              class: "form-control search-bar input",
               placeholder: "Look for a kitchen name or type"
           %>
-        <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+        <%= submit_tag "Search", name: "", class: "btn btn-primary button" %>
       <% end %>
     </div>
 
   </div>
-  <div class="row">
+  <div class="row my-4">
   <% if @kitchens.empty? %>
     <div class="col-12">
       <p class="text-center">No kitchens found matching your search criteria.</p>

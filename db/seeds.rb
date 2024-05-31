@@ -49,7 +49,12 @@ kitchens = Kitchen.create!([
     has_cookware: true,
     has_cutlery: true,
     availability: true,
-    prep_tables: 5
+    prep_tables: 5,
+    photos: [{
+      io: URI.open("https://cloudkitchens.com/_gatsby/file/e048d5d76a53e7581bff8af54badab21/Copy-of-Images-for-Blogs-1.png"),
+      filename: "kitchen1.png",
+      content_type: "image/png"
+    }]
   },
   {
     user_id: users[1].id,

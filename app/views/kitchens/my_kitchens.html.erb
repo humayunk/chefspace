@@ -1,70 +1,86 @@
-<h1 class="text-center my-4">My Kitchens</h1>
 
 <div class="container">
-  <div class="row">
-    <% @kitchens.each do |kitchen| %>
-      <div class="col-sm-6 col-md-4 col-lg-3 mb-4 d-flex">
-        <div class="card card-product w-100 rounded">
-         <% if kitchen.photos.attached? && kitchen.photos.any? %>
-           <%= cl_image_tag kitchen.photos.first.key, class: "img-fluid rounded-top", alt: "Kitchen Image" %>
-          <% else %>
-           <%= image_tag 'placeholder.jpeg', alt: kitchen.name, class: 'img-fluid rounded-top' %>
-         <% end %>
-          <div class="card-body card-product-infos d-flex flex-column">
-            <h5 class="card-title"><%= kitchen.name %></h5>
-            <p class="card-text"><%= kitchen.address %></p>
-            <p class="card-text"><%= kitchen.description %></p>
-            <p class="card-text"><%= "#{number_to_currency(kitchen.daily_rate)}/day" %></p>
-            <%= link_to 'Show', kitchen, class: 'btn btn-primary btn-sm mt-auto btn-block' %>
-          </div>
-        </div>
+<div class="row mt-5">
+  <h1>My Kitchens</h1>
+
+    <%# <div class="card bg-white p-4 mb-4">
+      <div class="card-body"> %>
+        <table class="table ">
+          <thead class="thead-light">
+            <tr>
+              <th>Name</th>
+              <th>Address</th>
+              <th>Description</th>
+              <th>Daily Rate</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @kitchens.each do |kitchen| %>
+              <tr>
+                <td><%= kitchen.name %></td>
+                <td><%= kitchen.address %></td>
+                <td><%= kitchen.description %></td>
+                <td><%= number_to_currency(kitchen.daily_rate) %> /day</td>
+                <td>
+                  <%= link_to 'Preview Page', kitchen, class: 'btn btn-primary btn-sm' %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
-    <% end %>
+  </div>
+</div>
+</div>
+
+
+
+
+<div class="container">
+<div class="row mt-5">
+  <h1 class="text">Incoming Requests</h1>
+  <%# <div class="card bg-white p-4 mb-4">
+    <div class="card-body"> %>
+      <table class="table bg-white mt-4">
+        <thead class="thead-dark">
+          <tr>
+            <th>Name</th>
+            <th>Kitchen</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Total Price</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @kitchens.each do |kitchen| %>
+            <% kitchen.reservations.each do |reservation| %>
+              <tr>
+                <td><%= "#{reservation.user.first_name} #{reservation.user.last_name}" %></td>
+                <td><%= reservation.kitchen.name %></td>
+                <td><%= reservation.start_date.strftime("%B %d, %Y") %></td>
+                <td><%= reservation.end_date.strftime("%B %d, %Y") %></td>
+                <td><%= number_to_currency(reservation.total_price) %></td>
+                <td><%= reservation.status %></td>
+                <td>
+                  <div class="btn-group" role="group">
+                    <%= button_to reservation_path(reservation, reservation: {status: 'Accepted'}), method: :patch, class: 'btn btn-primary btn-sm' do %>
+                      <i class="fas fa-check "></i>
+                    <% end %>
+                    <%= button_to reservation_path(reservation, reservation: {status: 'Declined'}), method: :patch, class: 'btn btn-light btn-sm' do %>
+                      <i class="fas fa-times"></i>
+                    <% end %>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
-<h1 class="text-center my-4">Incoming Requests</h1>
-
-<%# RESERVATIONS %>
-
-
-<div class="container">
-  <table class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Kitchen</th>
-        <th scope="col">Start Date</th>
-        <th scope="col">End Date</th>
-        <th scope="col">Total Price</th>
-        <th scope="col">Accepted/Declined</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @kitchens.each do |kitchen| %>
-	      <% kitchen.reservations.each do |reservation| %>
-        <%# <%= reservation.user %>
-        <div>
-          <tr>
-            <td><%= "#{reservation.user.first_name} #{reservation.user.last_name}" %></td>
-            <td><%= reservation.kitchen.name %></td>
-            <td><%= reservation.start_date.strftime("%B %d, %Y") %></td>
-            <td><%= reservation.end_date.strftime("%B %d, %Y") %></td>
-            <td><%= reservation.total_price %></td>
-            <td><%= reservation.status %></td>
-            <td>
-              <%= button_to 'Accept', reservation_path(reservation, reservation: {status: 'Accepted'}), method: :patch, class: 'btn btn-primary btn-sm' %>
-              <%# <%= link_to 'Edit', edit_kitchen_path(kitchen), class: 'btn btn-secondary btn-sm' %>
-              <%= button_to 'Decline', reservation_path(reservation, reservation: {status: 'Declined'}), method: :patch, class: 'btn btn-danger btn-sm' %>
-            </td>
-          </tr>
-        </div>
-	      <% end %>
-      <% end %>
-    </tbody>
-  </table>
 </div>
-
-
-<%# iterate on each kitchen @kitchens each do
-then .reservations and iterate on that array kitchen.reservations.each do %>

@@ -19,4 +19,11 @@ class Kitchen < ApplicationRecord
   validates :has_cutlery, inclusion: { in: [true, false] }
   validates :availability, inclusion: { in: [true, false] }
   validates :prep_tables, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_nil: true
+
+  include PgSearch::Model
+  pg_search_scope :search_by_name_and_type,
+    against: [ :name, :kitchen_type ],
+    using: {
+      tsearch: { prefix: true }
+    }
 end

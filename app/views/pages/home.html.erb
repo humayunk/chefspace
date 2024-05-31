@@ -1,11 +1,16 @@
-<!-- Hero Section -->
-  <section id="hero" class="jumbotron text-center mb-0">
-    <div class="container">
-      <h1 class="display-4">Welcome to ChefSpace</h1>
-      <p class="lead">Your one-stop solution for renting industrial kitchens.</p>
-      <%= link_to 'See Our Kitchens', kitchens_path, class: 'btn btn-primary btn-lg text-white' %>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://media.interaksyon.com/wp-content/uploads/2023/08/the-bear.jpg);">
+  <div class="container">
+    <div class="row">
+      <h1 class="display-4 text-center">Welcome to ChefSpace</h1>
+      <p class="lead text-center">Your one-stop solution for renting industrial kitchens.</p>
     </div>
-  </section>
+   <div class="d-flex justify-content-center">
+     <%= link_to 'See Our Kitchens', kitchens_path, class: 'btn btn-warning' %>
+   </div>
+
+  </div>
+</div>
 
   <!-- Features Section -->
   <section id="features" class="py-5">
@@ -31,22 +36,23 @@
   </section>
 
   <!-- About Us Section -->
-  <section id="about" class="py-5 bg-light">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <h2>About ChefSpace</h2>
-          <p>ChefSpace is dedicated to providing high-quality industrial kitchens for rent. Our mission is to support culinary entrepreneurs and established businesses by offering top-notch kitchen spaces that meet all their needs.</p>
-        </div>
-        <div class="col-md-6">
-          <%= image_tag "about-us.png" %>
-        </div>
+ <section id="about" class="py-5 bg-light">
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
+        <h2>About ChefSpace</h2>
+        <p>ChefSpace is dedicated to providing high-quality industrial kitchens for rent. Our mission is to support culinary entrepreneurs and established businesses by offering top-notch kitchen spaces that meet all their needs.</p>
+      </div>
+      <div class="col-md-6 text-center">
+        <%= image_tag "about-us.png", class: "img-fluid rounded-circle" %>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- Contact Section -->
-  <section id="contact" class="py-5">
+  <%# <section id="contact" class="py-5">
     <div class="container">
       <h2 class="text-center">Contact Us</h2>
       <form>
@@ -67,7 +73,7 @@
         <button type="submit" class="btn btn-primary">Send</button>
       </form>
     </div>
-  </section>
+  </section> %>
 
   <!-- Footer -->
   <footer class="bg-light py-3 text-center">

@@ -56,8 +56,8 @@
           <tr>
             <td><%= "#{reservation.user.first_name} #{reservation.user.last_name}" %></td>
             <td><%= reservation.kitchen.name %></td>
-            <td><%= reservation.start_date %></td>
-            <td><%= reservation.end_date %></td>
+            <td><%= reservation.start_date.strftime("%B %d, %Y") %></td>
+            <td><%= reservation.end_date.strftime("%B %d, %Y") %></td>
             <td><%= reservation.total_price %></td>
             <td><%= reservation.status %></td>
             <td>

@@ -15,7 +15,7 @@ class ReservationsController < ApplicationController
     @reservation.kitchen = @kitchen
     @reservation.user = current_user
     if @reservation.save
-      redirect_to my_reservations_path(current_user), notice: 'Reservation was successfully created.'
+      redirect_to new_kitchen_reservation_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,9 +28,6 @@ class ReservationsController < ApplicationController
     @reservation.update(reservation_params)
     redirect_to my_kitchens_path
   end
-
-  # def owner_reservations
-  # end
 
   private
 

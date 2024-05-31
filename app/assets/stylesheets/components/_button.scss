@@ -1,18 +1,7 @@
-.btn-primary-custom {
-  background-color: #007bff;  // The same color as the Log in button
-  border-color: #007bff;     // The same border color as the Log in button
-  color: white;              // White text color
-  padding: 0.375rem 0.75rem; // Same padding as the Log in button
-  border-radius: 0.25rem;    // Rounded corners
-  font-size: 1rem;           // Font size
-  line-height: 1.5;          // Line height
-  text-align: center;        // Center the text
-  display: inline-block;     // Display inline-block
-  margin-top: 1rem;          // Add margin on top
-  width: 100%;               // Full width button
+.btn-block {
+  width: 100%; // Ensure the button takes the full width
 }
 
-.btn-primary-custom:hover {
-  background-color: #0056b3; // Darker blue for hover state
-  border-color: #0056b3;     // Darker border for hover state
+.mt-3 {
+  margin-top: 1rem; // Add margin on top
 }

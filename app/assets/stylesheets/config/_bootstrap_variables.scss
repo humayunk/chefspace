@@ -39,6 +39,18 @@ $border-radius-xxl:           1rem;
   color: $primary !important;
 }
 
+.btn-warning {
+  background-color: $orange-yellow!important;
+  border-color: $orange-yellow!important;
+}
+
+.btn-warning:hover {
+  // background-color: darken($primary, 10%) !important;
+  // border-color: darken($primary, 10%) !important;
+  background-color: darken($orange-yellow, 10%) !important;
+  color: $primary!important;
+}
+
 .card {
   border-radius: $border-radius-xxl !important;
 }

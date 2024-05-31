@@ -38,3 +38,11 @@ $border-radius-xxl:           1rem;
   background-color: $orange-yellow !important;
   color: $primary !important;
 }
+
+.card {
+  border-radius: $border-radius-xxl !important;
+}
+
+.btn {
+  border-radius: $border-radius-xxl !important;
+}

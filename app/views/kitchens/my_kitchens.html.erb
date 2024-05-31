@@ -52,7 +52,7 @@
       <% @kitchens.each do |kitchen| %>
 	      <% kitchen.reservations.each do |reservation| %>
         <%# <%= reservation.user %>
-        <div data-controller="status-button">
+        <div>
           <tr>
             <td><%= "#{reservation.user.first_name} #{reservation.user.last_name}" %></td>
             <td><%= reservation.kitchen.name %></td>

@@ -11,7 +11,7 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = Reservation.new(reservation_params)
+    @reservation = Reservation.new(create_reservation_params)
     @reservation.kitchen = @kitchen
     @reservation.user = current_user
     if @reservation.save
@@ -25,7 +25,7 @@ class ReservationsController < ApplicationController
   end
 
   def update
-    @reservation.update(reservation_params)
+    @reservation.update(update_reservation_params)
     redirect_to my_kitchens_path
   end
 
@@ -39,7 +39,11 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
   end
 
-  def reservation_params
+  def create_reservation_params
     params.require(:reservation).permit(:start_date, :end_date, :total_price)
+  end
+
+  def update_reservation_params
+    params.require(:reservation).permit(:status)
   end
 end

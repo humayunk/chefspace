@@ -81,14 +81,23 @@
       </div>
     </div>
   </div>
-</div>
 
+  <!-- Reviews Section -->
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <h3>Reviews</h3>
+      <% @reviews.each do |review| %>
+        <div class="review-card card my-3">
+          <div class="card-body">
+            <h5 class="card-title"><%= review.user.first_name %> <%= review.user.last_name %></h5>
+            <p class="card-text"><%= review.content %></p>
+            <p class="card-text"><strong>Rating:</strong> <%= review.rating %> / 5</p>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
-
 
 <%= javascript_tag do %>
   const startDateInput = document.getElementById('start_date');

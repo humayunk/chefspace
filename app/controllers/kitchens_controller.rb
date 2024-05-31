@@ -11,6 +11,7 @@ class KitchensController < ApplicationController
   def show
     @kitchen = Kitchen.find(params[:id])
     @reservation = @kitchen.reservations.build
+    @reviews = @kitchen.reviews
   end
 
   def new

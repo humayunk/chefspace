@@ -1,3 +1,4 @@
+
 <h1 class="text-center my-4">My Kitchens</h1>
 
 <div class="container">
@@ -53,8 +54,7 @@
             <td><%= reservation.total_price %></td>
             <td><%= reservation.status %></td>
             <td>
-              <%= button_to 'Accept', reservation_path(reservation, reservation: {status: 'Accepted'}), method: :patch, class: 'btn btn-primary btn-sm' %>
-              <%# <%= link_to 'Edit', edit_kitchen_path(kitchen), class: 'btn btn-secondary btn-sm' %>
+              <%= button_to 'Accept', reservation_path(reservation, reservation: {status: 'Accepted'}), method: :patch, class: 'btn btn-primary btn-sm'%>
               <%= button_to 'Decline', reservation_path(reservation, reservation: {status: 'Declined'}), method: :patch, class: 'btn btn-danger btn-sm' %>
             </td>
           </tr>

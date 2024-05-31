@@ -9,23 +9,34 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <%= link_to 'List your kitchen', new_kitchen_path, class: 'btn btn-md btn-primary text-white mx-3' %>
+      <% if user_signed_in? %>
+        <%= link_to 'List your kitchen', new_kitchen_path, class: 'btn btn-md btn-primary text-white mx-3' %>
+      <% else %>
+        <%= link_to 'List your kitchen', "#", data: { bs_toggle: "modal", bs_target: "#loginModal" }, class: 'btn btn-md btn-primary text-white mx-3' %>
+      <% end %>
 
-      <ul class="navbar-nav me-auto">
+      <ul class="navbar-nav ms-auto">
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://avatars.githubusercontent.com/u/166766412?v=4", class: "avatar", alt: "dropdown menu" %>
-          </a>
+            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= image_tag "https://avatars.githubusercontent.com/u/166766412?v=4", class: "avatar", alt: "dropdown menu" %>
+            </a>
+
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "My Reservations", my_reservations_path, class: "dropdown-item" %>
               <%= link_to "My Kitchens", my_kitchens_path, class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
             </div>
           </li>
         <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Menu
+            </a>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Log in", "#", data: { bs_toggle: "modal", bs_target: "#loginModal" }, class: "dropdown-item" %>
+              <%= link_to "Sign up", "#", data: { bs_toggle: "modal", bs_target: "#signupModal" }, class: "dropdown-item" %>
+            </div>
           </li>
         <% end %>
       </ul>

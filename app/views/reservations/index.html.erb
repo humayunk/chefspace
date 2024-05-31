@@ -6,7 +6,7 @@
       <div class="col-md-8 offset-md-2 my-3">
         <div class="card bg-white">
           <div class="card-body">
-            <h5 class="card-title">From: <%= reservation.start_date.strftime("%B %d, %Y") %> To: <%= reservation.end_date.strftime("%B %d, %Y") %></h5>
+            <h5 class="card-title">Dates: <%= reservation.start_date.strftime("%B %d, %Y")  %> - <%= reservation.end_date.strftime("%B %d, %Y") %></h5>
             <p class="card-text">
               <strong>Kitchen Name:</strong> <%= reservation.kitchen.name %><br>
               <strong>Address:</strong> <%= reservation.kitchen.address %><br>

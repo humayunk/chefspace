@@ -39,13 +39,11 @@ users = User.create!([
   }
 ])
 
-# Create Kitchens
-
 kitchens = Kitchen.create!([
   {
     user_id: users[1].id,
     name: "Main Street Kitchen",
-    address: "123 Main St, Los Angeles, CA",
+    address: "123 Main St, Montreal, QC",
     daily_rate: 150,
     kitchen_type: "commercial",
     description: "A fully equipped commercial kitchen.",
@@ -70,7 +68,7 @@ kitchens = Kitchen.create!([
   {
     user_id: users[1].id,
     name: "Elm Street Kitchen",
-    address: "456 Elm St, Los Angeles, CA",
+    address: "456 Elm St, Montreal, QC",
     daily_rate: 200,
     kitchen_type: "industrial",
     description: "A large industrial kitchen with modern appliances.",
@@ -95,7 +93,7 @@ kitchens = Kitchen.create!([
   {
     user_id: users[1].id,
     name: "Sunset Boulevard Kitchen",
-    address: "789 Sunset Blvd, Los Angeles, CA",
+    address: "789 Sunset Blvd, Montreal, QC",
     daily_rate: 180,
     kitchen_type: "commercial",
     description: "A spacious commercial kitchen with all amenities.",
@@ -120,7 +118,7 @@ kitchens = Kitchen.create!([
   {
     user_id: users[1].id,
     name: "Ocean Avenue Kitchen",
-    address: "321 Ocean Ave, Los Angeles, CA",
+    address: "321 Ocean Ave, Montreal, QC",
     daily_rate: 250,
     kitchen_type: "industrial",
     description: "A state-of-the-art industrial kitchen.",
@@ -145,7 +143,7 @@ kitchens = Kitchen.create!([
   {
     user_id: users[1].id,
     name: "Broadway Kitchen",
-    address: "654 Broadway, Los Angeles, CA",
+    address: "654 Broadway, Montreal, QC",
     daily_rate: 120,
     kitchen_type: "commercial",
     description: "A versatile commercial kitchen perfect for catering.",
@@ -170,7 +168,7 @@ kitchens = Kitchen.create!([
   {
     user_id: users[1].id,
     name: "Market Street Kitchen",
-    address: "987 Market St, Los Angeles, CA",
+    address: "987 Market St, Montreal, QC",
     daily_rate: 220,
     kitchen_type: "industrial",
     description: "An industrial kitchen with extensive equipment.",
@@ -195,7 +193,7 @@ kitchens = Kitchen.create!([
   {
     user_id: users[1].id,
     name: "Hollywood Kitchen",
-    address: "432 Hollywood Blvd, Los Angeles, CA",
+    address: "432 Hollywood Blvd, Montreal, QC",
     daily_rate: 170,
     kitchen_type: "commercial",
     description: "A well-equipped commercial kitchen for all needs.",
@@ -220,7 +218,7 @@ kitchens = Kitchen.create!([
   {
     user_id: users[1].id,
     name: "Vine Street Kitchen",
-    address: "543 Vine St, Los Angeles, CA",
+    address: "543 Vine St, Montreal, QC",
     daily_rate: 130,
     kitchen_type: "commercial",
     description: "A convenient commercial kitchen in a prime location.",
@@ -243,7 +241,6 @@ kitchens = Kitchen.create!([
     }]
   }
 ])
-
 # Create Reservations
 reservations = Reservation.create!([
   {

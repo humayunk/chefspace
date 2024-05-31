@@ -14,3 +14,24 @@
 a {
   text:white;
 }
+
+.fa-bars {
+  font-size: 24px;
+  color: #007bff; /* Adjust color to match your design */
+}
+
+.nav-item.dropdown {
+  display: flex;
+  align-items: center;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .navbar-collapse {
+  display: flex;
+  justify-content: space-between;
+}

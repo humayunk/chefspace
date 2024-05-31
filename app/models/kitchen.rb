@@ -2,6 +2,7 @@ class Kitchen < ApplicationRecord
   belongs_to :user
   has_many :reservations
   has_many_attached :photos
+  has_many :reviews, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 100 }
   validates :address, presence: true

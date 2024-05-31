@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   resources :kitchens, only: [ :index, :show, :new, :create ] do
     resources :reservations, only: [ :new, :create ]
+    resources :reviews, only: [ :create, :destroy ] # Adding the reviews routes
   end
 
   resources :reservations, only: [ :show, :update ]

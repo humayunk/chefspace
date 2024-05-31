@@ -276,3 +276,36 @@ reservations = Reservation.create!([
     status: "declined"
   }
 ])
+# Create Reviews
+reviews = Review.create!([
+  {
+    content: 'Amazing kitchen with all the amenities. Highly recommend!',
+    rating: 5,
+    user_id: users[2].id,  # user3
+    kitchen_id: kitchens[0].id  # Main Street Kitchen
+  },
+  {
+    content: 'Good kitchen but could use more space.',
+    rating: 4,
+    user_id: users[0].id,  # user1
+    kitchen_id: kitchens[1].id  # Elm Street Kitchen
+  },
+  {
+    content: 'Perfect for private events!',
+    rating: 5,
+    user_id: users[1].id,  # user2
+    kitchen_id: kitchens[2].id  # Sunset Boulevard Kitchen
+  },
+  {
+    content: 'Well-maintained and clean. Would book again.',
+    rating: 4,
+    user_id: users[2].id,  # user3
+    kitchen_id: kitchens[1].id  # Elm Street Kitchen
+  },
+  {
+    content: 'Top-notch kitchen with modern equipment.',
+    rating: 5,
+    user_id: users[0].id,  # user1
+    kitchen_id: kitchens[2].id  # Sunset Boulevard Kitchen
+  }
+])
